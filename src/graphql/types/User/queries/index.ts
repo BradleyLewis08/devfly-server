@@ -1,13 +1,22 @@
-import { extendType } from 'nexus';
+import { extendType, stringArg, nonNull } from 'nexus';
 
 export const UserQuery = extendType({
   type: 'Query',
   definition(t) {
 	  t.field('user', {
 		  type: 'User',
-		  async resolve(_, __, {models}) {
-			return await models.User.findOne({})
+		  args: {
+			  userId: nonNull(stringArg())
+		  },
+		  resolve: async (_, { userId }, {models}) => {
+			return await models.User.findOne({
+				userId: userId
+			})
 		  }
 	  });
   }
 });
+
+
+
+

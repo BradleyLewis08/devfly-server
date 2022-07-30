@@ -110,6 +110,11 @@ export interface NexusGenArgTypes {
       userId: string; // String!
     }
   }
+  Query: {
+    user: { // args
+      userId: string; // String!
+    }
+  }
 }
 
 export interface NexusGenAbstractTypeMembers {
